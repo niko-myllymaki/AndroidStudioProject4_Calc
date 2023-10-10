@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/hint_result"/>
+
+    <Button
+        android:id="@+id/button_input_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="290dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/input_1"/>
+
+    <Button
+        android:id="@+id/button_input_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/input_2"/>
+
+    <Button
+        android:id="@+id/button_input_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/input_3"/>
+
+    <Button
+        android:id="@+id/button_input_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_input_1"
+        android:text="@string/input_4"/>
+
+    <Button
+        android:id="@+id/button_input_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_4"
+        app:layout_constraintTop_toBottomOf="@id/button_input_2"
+        android:text="@string/input_5"/>
+
+    <Button
+        android:id="@+id/button_input_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_5"
+        app:layout_constraintTop_toBottomOf="@id/button_input_3"
+        android:text="@string/input_6"/>
+
+    <Button
+        android:id="@+id/button_input_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_input_4"
+        android:text="@string/input_7"/>
+
+    <Button
+        android:id="@+id/button_input_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_7"
+        app:layout_constraintTop_toBottomOf="@id/button_input_5"
+        android:text="@string/input_8"/>
+
+    <Button
+        android:id="@+id/button_input_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_8"
+        app:layout_constraintTop_toBottomOf="@id/button_input_6"
+        android:text="@string/input_9"/>
+
+    <Button
+        android:id="@+id/button_input_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_input_7"
+        android:text="@string/input_0"/>
+
+    <Button
+        android:id="@+id/button_input_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_0"
+        app:layout_constraintTop_toBottomOf="@id/button_input_8"
+        android:text="@string/input_clear"/>
+
+    <Button
+        android:id="@+id/button_input_equals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_clear"
+        app:layout_constraintTop_toBottomOf="@id/button_input_9"
+        android:text="@string/input_equals"/>
+
+    <Button
+        android:id="@+id/button_input_addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/input_plus"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
