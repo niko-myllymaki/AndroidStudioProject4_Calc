@@ -3,6 +3,7 @@ package nm.vamk.assignment_4_calc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,13 +26,15 @@ public class MainActivity extends AppCompatActivity {
     private Button clear;
 
     private Button addition;
+    private int firstNumber;
 
-    private StringBuilder stringBuilder;
+    //private StringBuilder stringBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         display = findViewById(R.id.display);
 
 
@@ -58,32 +61,65 @@ public class MainActivity extends AppCompatActivity {
         num0.setOnClickListener(ButtonClickListener);
 
         clear = findViewById(R.id.button_input_clear);
-        clear.setOnClickListener(ButtonClickListener);
+        clear.setOnClickListener(OperationClickListener);
 
         addition = findViewById(R.id.button_input_addition);
-        addition.setOnClickListener(ButtonClickListener);
+        addition.setOnClickListener(OperationClickListener);
 
 
 
-        stringBuilder = new StringBuilder();
+        //stringBuilder = new StringBuilder();
     }
+
+    private View.OnClickListener OperationClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button clickedOperationButton = (Button) v;
+            int firstNum = Integer.valueOf(display.getText().toString());
+
+            if (clickedOperationButton.equals(clear)) {
+                display.setText("");
+            }
+
+            if(clickedOperationButton.equals(addition)) {
+
+                int result = firstNum + 5;
+                String resultToString = String.valueOf(result);
+                display.setText(resultToString);
+
+            }
+
+
+
+        }
+    };
+
 
     private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Button clickedButton = (Button) v;
-            stringBuilder.append(clickedButton.getText().toString());
-            display.setText(stringBuilder);
+            Button clickedNumberButton = (Button) v;
+            display.setText(clickedNumberButton.getText().toString());
 
+
+            //stringBuilder.append(clickedButton.getText().toString());
+            //display.setText(stringBuilder);
+
+            /*
             if(clickedButton.equals(clear)) {
-                stringBuilder.setLength(0);
+                //stringBuilder.setLength(0);
                 display.setText("");
             }
+            */
 
+            /*
             if(clickedButton.equals(addition)) {
                 int addendsLeft = Integer.valueOf(stringBuilder.toString());
                 stringBuilder.setLength(0);
             }
+
+             */
+
 
 
 
