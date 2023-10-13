@@ -3,6 +3,7 @@ package nm.vamk.assignment_4_calc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     private TextView display;
+    private String resultToDisplay;
     private Button num1;
     private Button num2;
     private Button num3;
@@ -24,14 +26,21 @@ public class MainActivity extends AppCompatActivity {
     private Button num0;
     private Button clear;
 
+    private Button equals;
+
     private Button addition;
 
-    private StringBuilder stringBuilder;
+    private int firstNumber;
+    private int secondNumber;
+    private String operationToBeDone;
+
+    //private StringBuilder stringBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         display = findViewById(R.id.display);
 
 
@@ -58,38 +67,53 @@ public class MainActivity extends AppCompatActivity {
         num0.setOnClickListener(ButtonClickListener);
 
         clear = findViewById(R.id.button_input_clear);
-        clear.setOnClickListener(ButtonClickListener);
+        clear.setOnClickListener(OperationClickListener);
 
         addition = findViewById(R.id.button_input_addition);
-        addition.setOnClickListener(ButtonClickListener);
+        addition.setOnClickListener(OperationClickListener);
+
+        equals = findViewById(R.id.button_input_equals);
+        equals.setOnClickListener(OperationClickListener);
 
 
 
-        stringBuilder = new StringBuilder();
+        //stringBuilder = new StringBuilder();
     }
+
+    private View.OnClickListener OperationClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button clickedOperationButton = (Button) v;
+            //operationToBeDone = clickedOperationButton.getText().toString();
+
+
+            if (clickedOperationButton.equals(clear)) {
+                display.setText("");
+            }
+
+            if(clickedOperationButton.equals(equals)) {
+                secondNumber = Integer.valueOf(display.getText().toString());
+                int result = firstNumber + secondNumber;
+                resultToDisplay = String.valueOf(result);
+                display.setText(resultToDisplay);
+            }
+
+            if(clickedOperationButton.equals(addition)) {
+                display.setText("");
+
+            }
+
+        }
+    };
+
 
     private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Button clickedButton = (Button) v;
-            stringBuilder.append(clickedButton.getText().toString());
-            display.setText(stringBuilder);
-
-            if(clickedButton.equals(clear)) {
-                stringBuilder.setLength(0);
-                display.setText("");
-            }
-
-            if(clickedButton.equals(addition)) {
-                int addendsLeft = Integer.valueOf(stringBuilder.toString());
-                stringBuilder.setLength(0);
-            }
-
-
-
-
-
-
+            Button clickedNumberButton = (Button) v;
+            display.setText(clickedNumberButton.getText().toString());
+            int numberToSave = Integer.valueOf(display.getText().toString());
+            firstNumber = numberToSave;
 
         }
     };
