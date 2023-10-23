@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private Button equals;
 
     private Button addition;
+    private Button subtraction;
+    private Button multiplication;
 
-    private int firstNumber;
-    private int secondNumber;
-    private String operationToBeDone;
+    private String[] valuesAndOperation;
 
     //private StringBuilder stringBuilder;
 
@@ -72,13 +72,43 @@ public class MainActivity extends AppCompatActivity {
         addition = findViewById(R.id.button_input_addition);
         addition.setOnClickListener(OperationClickListener);
 
+        subtraction = findViewById(R.id.button_input_subtraction);
+        subtraction.setOnClickListener(OperationClickListener);
+
+        multiplication = findViewById(R.id.button_input_multiplication);
+        multiplication.setOnClickListener(OperationClickListener);
+
         equals = findViewById(R.id.button_input_equals);
         equals.setOnClickListener(OperationClickListener);
+
+        //Index 0 will contain a value, index 1 will contain the operation to be done
+        //index 2 will contain another value
+        valuesAndOperation = new String[3];
 
 
 
         //stringBuilder = new StringBuilder();
     }
+
+    private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button clickedNumberButton = (Button) v;
+            String displayedText = display.getText().toString();
+            String textToDisplay = displayedText + clickedNumberButton.getText().toString();
+            display.setText(textToDisplay);
+            /*
+            if(clickedButton.equals(addition)) {
+                valuesAndOperation[1] = addition.getText().toString();
+            }
+
+            Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1]);
+*/
+
+
+
+        }
+    };
 
     private View.OnClickListener OperationClickListener = new View.OnClickListener() {
         @Override
@@ -92,30 +122,66 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(clickedOperationButton.equals(equals)) {
-                secondNumber = Integer.valueOf(display.getText().toString());
-                int result = firstNumber + secondNumber;
-                resultToDisplay = String.valueOf(result);
-                display.setText(resultToDisplay);
+                valuesAndOperation[2] = display.getText().toString();
+                display.setText("");
+                //Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1] + " " + valuesAndOperation[2]);
+                String operation = valuesAndOperation[1];
+                double firstValue = Integer.valueOf(valuesAndOperation[0]);
+                double secondValue = Integer.valueOf(valuesAndOperation[2]);
+                double result = 0;
+
+                switch (operation) {
+                    case "+":
+                        result = firstValue + secondValue;
+                        break;
+                    case "-":
+                        result = firstValue - secondValue;
+                        break;
+                    case "*":
+                        result = firstValue * secondValue;
+                        break;
+
+                }
+
+                display.setText(String.valueOf(result));
+
+                /*
+                if(operation.equals(R.string.addition))  {
+                    //Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1] + " " + valuesAndOperation[2]);
+                    double firstValue = Integer.valueOf(valuesAndOperation[0]);
+                    double secondValue = Integer.valueOf(valuesAndOperation[2]);
+
+                    double result = firstValue + secondValue;
+                    display.setText(String.valueOf(result));
+                }
+                 */
+
+
+
             }
 
             if(clickedOperationButton.equals(addition)) {
+                valuesAndOperation[0] = display.getText().toString();
                 display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
 
+            if(clickedOperationButton.equals(subtraction)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
+
+            if(clickedOperationButton.equals(multiplication)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
             }
 
         }
     };
 
 
-    private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button clickedNumberButton = (Button) v;
-            display.setText(clickedNumberButton.getText().toString());
-            int numberToSave = Integer.valueOf(display.getText().toString());
-            firstNumber = numberToSave;
 
-        }
-    };
 
 }
