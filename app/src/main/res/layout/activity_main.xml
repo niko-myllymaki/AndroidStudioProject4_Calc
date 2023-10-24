@@ -175,5 +175,25 @@
         app:layout_constraintTop_toBottomOf="@id/button_input_subtraction"
         android:text="@string/operation_multiplication"/>
 
+    <Button
+        android:id="@+id/button_input_division"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/button_input_equals"
+        app:layout_constraintTop_toBottomOf="@id/button_input_multiplication"
+        android:text="@string/operation_division"/>
+
+    <Button
+        android:id="@+id/button_input_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_input_division"
+        android:text="@string/operation_percentile"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

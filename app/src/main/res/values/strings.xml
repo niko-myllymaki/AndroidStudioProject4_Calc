@@ -17,5 +17,7 @@
     <string name="operation_subtraction">-</string>
     <string name="addition">+</string>
     <string name="operation_multiplication">*</string>
+    <string name="operation_division">/</string>
+    <string name="operation_percentile">%</string>
 
 </resources>

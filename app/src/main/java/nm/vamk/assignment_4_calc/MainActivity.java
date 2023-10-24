@@ -13,7 +13,6 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     private TextView display;
-    private String resultToDisplay;
     private Button num1;
     private Button num2;
     private Button num3;
@@ -32,9 +31,12 @@ public class MainActivity extends AppCompatActivity {
     private Button subtraction;
     private Button multiplication;
 
+    private Button division;
+
+    private Button percentile;
+
     private String[] valuesAndOperation;
 
-    //private StringBuilder stringBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         multiplication = findViewById(R.id.button_input_multiplication);
         multiplication.setOnClickListener(OperationClickListener);
 
+        division = findViewById(R.id.button_input_division);
+        division.setOnClickListener(OperationClickListener);
+
+        percentile = findViewById(R.id.button_input_percentile);
+        percentile.setOnClickListener(OperationClickListener);
+
         equals = findViewById(R.id.button_input_equals);
         equals.setOnClickListener(OperationClickListener);
 
@@ -116,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
             Button clickedOperationButton = (Button) v;
             //operationToBeDone = clickedOperationButton.getText().toString();
 
-
             if (clickedOperationButton.equals(clear)) {
                 display.setText("");
             }
@@ -140,23 +147,20 @@ public class MainActivity extends AppCompatActivity {
                     case "*":
                         result = firstValue * secondValue;
                         break;
+                    case "/":
+                        result = firstValue / secondValue;
+                        break;
+                    case "%":
+                        double secondValueToDecimal = secondValue / 100;
+                        result = firstValue * secondValueToDecimal;
+                        break;
 
                 }
 
-                display.setText(String.valueOf(result));
-
-                /*
-                if(operation.equals(R.string.addition))  {
-                    //Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1] + " " + valuesAndOperation[2]);
-                    double firstValue = Integer.valueOf(valuesAndOperation[0]);
-                    double secondValue = Integer.valueOf(valuesAndOperation[2]);
-
-                    double result = firstValue + secondValue;
+                if (String.valueOf(result).equals("Infinity")) {
+                    display.setText("Can't divide by zero!");
+                } else
                     display.setText(String.valueOf(result));
-                }
-                 */
-
-
 
             }
 
@@ -173,6 +177,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(clickedOperationButton.equals(multiplication)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
+
+            if(clickedOperationButton.equals(division)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
+
+            if(clickedOperationButton.equals(percentile)) {
                 valuesAndOperation[0] = display.getText().toString();
                 display.setText("");
                 valuesAndOperation[1] = clickedOperationButton.getText().toString();
