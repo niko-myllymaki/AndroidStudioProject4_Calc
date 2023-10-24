@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] valuesAndOperation;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
         equals = findViewById(R.id.button_input_equals);
         equals.setOnClickListener(OperationClickListener);
 
+        //Initialize String array
         //Index 0 will contain a value, index 1 will contain the operation to be done
         //index 2 will contain another value
         valuesAndOperation = new String[3];
-
     }
 
     private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
@@ -112,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Button clickedOperationButton = (Button) v;
-            //operationToBeDone = clickedOperationButton.getText().toString();
 
             if (clickedOperationButton.equals(clear)) {
                 display.setText("");
@@ -121,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
             if(clickedOperationButton.equals(equals)) {
                 valuesAndOperation[2] = display.getText().toString();
                 display.setText("");
-                Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1] + " " + valuesAndOperation[2]);
                 String operation = valuesAndOperation[1];
                 double firstValue = Double.valueOf(valuesAndOperation[0]);
                 double secondValue = Double.valueOf(valuesAndOperation[2]);
@@ -143,44 +140,14 @@ public class MainActivity extends AppCompatActivity {
                     case "%":
                         result = firstValue * (secondValue/100);
                         break;
-
                 }
 
                 if (String.valueOf(result).equals("Infinity")) {
-                    display.setText("Can't divide by zero!");
+                    display.setText(R.string.warning);
                 } else
                     display.setText(String.valueOf(result));
 
-            }
-
-            if(clickedOperationButton.equals(addition)) {
-                valuesAndOperation[0] = display.getText().toString();
-                display.setText("");
-                valuesAndOperation[1] = clickedOperationButton.getText().toString();
-
-                Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1]);
-
-            }
-
-            if(clickedOperationButton.equals(subtraction)) {
-                valuesAndOperation[0] = display.getText().toString();
-                display.setText("");
-                valuesAndOperation[1] = clickedOperationButton.getText().toString();
-            }
-
-            if(clickedOperationButton.equals(multiplication)) {
-                valuesAndOperation[0] = display.getText().toString();
-                display.setText("");
-                valuesAndOperation[1] = clickedOperationButton.getText().toString();
-            }
-
-            if(clickedOperationButton.equals(division)) {
-                valuesAndOperation[0] = display.getText().toString();
-                display.setText("");
-                valuesAndOperation[1] = clickedOperationButton.getText().toString();
-            }
-
-            if(clickedOperationButton.equals(percentile)) {
+            } else {
                 valuesAndOperation[0] = display.getText().toString();
                 display.setText("");
                 valuesAndOperation[1] = clickedOperationButton.getText().toString();

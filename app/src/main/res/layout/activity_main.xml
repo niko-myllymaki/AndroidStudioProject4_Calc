@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/hint_result"/>
+        android:hint="@string/hint_display_area"/>
 
     <Button
         android:id="@+id/button_input_1"
