@@ -12,6 +12,12 @@
     <string name="input_0">0</string>
     <string name="hint_result">Display Area</string>
     <string name="input_clear">C</string>
-    <string name="input_plus">+</string>
     <string name="input_equals">=</string>
+    <string name="operation_addition">+</string>
+    <string name="operation_subtraction">-</string>
+    <string name="addition">+</string>
+    <string name="operation_multiplication">*</string>
+    <string name="operation_division">/</string>
+    <string name="operation_percentile">%</string>
+
 </resources>

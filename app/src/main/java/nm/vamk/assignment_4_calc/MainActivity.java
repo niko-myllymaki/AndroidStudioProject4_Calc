@@ -25,10 +25,18 @@ public class MainActivity extends AppCompatActivity {
     private Button num0;
     private Button clear;
 
-    private Button addition;
-    private int firstNumber;
+    private Button equals;
 
-    //private StringBuilder stringBuilder;
+    private Button addition;
+    private Button subtraction;
+    private Button multiplication;
+
+    private Button division;
+
+    private Button percentile;
+
+    private String[] valuesAndOperation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,68 +74,130 @@ public class MainActivity extends AppCompatActivity {
         addition = findViewById(R.id.button_input_addition);
         addition.setOnClickListener(OperationClickListener);
 
+        subtraction = findViewById(R.id.button_input_subtraction);
+        subtraction.setOnClickListener(OperationClickListener);
+
+        multiplication = findViewById(R.id.button_input_multiplication);
+        multiplication.setOnClickListener(OperationClickListener);
+
+        division = findViewById(R.id.button_input_division);
+        division.setOnClickListener(OperationClickListener);
+
+        percentile = findViewById(R.id.button_input_percentile);
+        percentile.setOnClickListener(OperationClickListener);
+
+        equals = findViewById(R.id.button_input_equals);
+        equals.setOnClickListener(OperationClickListener);
+
+        //Index 0 will contain a value, index 1 will contain the operation to be done
+        //index 2 will contain another value
+        valuesAndOperation = new String[3];
+
 
 
         //stringBuilder = new StringBuilder();
     }
 
+    private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button clickedNumberButton = (Button) v;
+            String displayedText = display.getText().toString();
+            String textToDisplay = displayedText + clickedNumberButton.getText().toString();
+            display.setText(textToDisplay);
+            /*
+            if(clickedButton.equals(addition)) {
+                valuesAndOperation[1] = addition.getText().toString();
+            }
+
+            Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1]);
+*/
+
+
+
+        }
+    };
+
     private View.OnClickListener OperationClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button clickedOperationButton = (Button) v;
-            int firstNum = Integer.valueOf(display.getText().toString());
+            //operationToBeDone = clickedOperationButton.getText().toString();
 
             if (clickedOperationButton.equals(clear)) {
                 display.setText("");
             }
 
-            if(clickedOperationButton.equals(addition)) {
-
-                int result = firstNum + 5;
-                String resultToString = String.valueOf(result);
-                display.setText(resultToString);
-
-            }
-
-
-
-        }
-    };
-
-
-    private View.OnClickListener ButtonClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button clickedNumberButton = (Button) v;
-            display.setText(clickedNumberButton.getText().toString());
-
-
-            //stringBuilder.append(clickedButton.getText().toString());
-            //display.setText(stringBuilder);
-
-            /*
-            if(clickedButton.equals(clear)) {
-                //stringBuilder.setLength(0);
+            if(clickedOperationButton.equals(equals)) {
+                valuesAndOperation[2] = display.getText().toString();
                 display.setText("");
+                //Log.d("ValsAndOp", valuesAndOperation[0] + " " + valuesAndOperation[1] + " " + valuesAndOperation[2]);
+                String operation = valuesAndOperation[1];
+                double firstValue = Integer.valueOf(valuesAndOperation[0]);
+                double secondValue = Integer.valueOf(valuesAndOperation[2]);
+                double result = 0;
+
+                switch (operation) {
+                    case "+":
+                        result = firstValue + secondValue;
+                        break;
+                    case "-":
+                        result = firstValue - secondValue;
+                        break;
+                    case "*":
+                        result = firstValue * secondValue;
+                        break;
+                    case "/":
+                        result = firstValue / secondValue;
+                        break;
+                    case "%":
+                        double secondValueToDecimal = secondValue / 100;
+                        result = firstValue * secondValueToDecimal;
+                        break;
+
+                }
+
+                if (String.valueOf(result).equals("Infinity")) {
+                    display.setText("Can't divide by zero!");
+                } else
+                    display.setText(String.valueOf(result));
+
             }
-            */
 
-            /*
-            if(clickedButton.equals(addition)) {
-                int addendsLeft = Integer.valueOf(stringBuilder.toString());
-                stringBuilder.setLength(0);
+            if(clickedOperationButton.equals(addition)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
             }
 
-             */
+            if(clickedOperationButton.equals(subtraction)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
 
+            if(clickedOperationButton.equals(multiplication)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
 
+            if(clickedOperationButton.equals(division)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
 
-
-
-
-
+            if(clickedOperationButton.equals(percentile)) {
+                valuesAndOperation[0] = display.getText().toString();
+                display.setText("");
+                valuesAndOperation[1] = clickedOperationButton.getText().toString();
+            }
 
         }
     };
+
+
+
 
 }
