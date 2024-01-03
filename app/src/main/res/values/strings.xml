@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment_4_calc</string>
+    <string name="app_name">Calculator</string>
     <string name="input_1">1</string>
     <string name="input_2">2</string>
     <string name="input_3">3</string>
@@ -10,8 +10,16 @@
     <string name="input_8">8</string>
     <string name="input_9">9</string>
     <string name="input_0">0</string>
-    <string name="hint_result">Display Area</string>
+    <string name="hint_display_area">Display Area</string>
     <string name="input_clear">C</string>
-    <string name="input_plus">+</string>
-    <string name="input_equals">=</string>
+    <string name="operation_equals">=</string>
+    <string name="operation_addition">+</string>
+    <string name="operation_subtraction">-</string>
+    <string name="addition">+</string>
+    <string name="operation_multiplication">*</string>
+    <string name="operation_division">/</string>
+    <string name="operation_percentile">%</string>
+    <string name="input_decimal">.</string>
+    <string name="warning">Cannot divide by zero!</string>
+
 </resources>
